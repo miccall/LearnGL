@@ -142,15 +142,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="frag.fs" />
     <None Include="packages.config" />
+    <None Include="vert.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Program Files\OpenGL\lib\GLAD\src\glad.c" />
     <ClCompile Include="mainTest.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Test01.cpp" />
     <ClCompile Include="Test02.cpp" />
+    <ClCompile Include="Test03.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyGUP.h" />
+    <ClInclude Include="Shader.h" />
     <ClInclude Include="Test01.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

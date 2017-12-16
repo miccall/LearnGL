@@ -3,12 +3,11 @@
 
 int Test01()
 {
-	
-	CreatGLFwWindow();
+	ConfigGLFwWindow();
 
 	GLFWwindow* window = InitGLFWwindow();
 
-	if (window == NULL)
+	if (window == nullptr)
 	{
 		return -1;
 	}
@@ -68,7 +67,7 @@ void CustomRender()
 }
 
 
-void CreatGLFwWindow() {
+void ConfigGLFwWindow() {
 	// glfw: initialize and configure
 	// ------------------------------
 	// 调用 glfwInit() 来初始化GLFW 
@@ -79,8 +78,6 @@ void CreatGLFwWindow() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	// 告诉GLFW我们使用的是核心模式(Core-profile)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-
 #ifdef __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // 如果使用的是苹果系统 就执行这一行 
 #endif
@@ -94,13 +91,13 @@ GLFWwindow * InitGLFWwindow()
 	// glfwCreateWindow(窗口的宽度，窗口的高度 ，“窗口名称（标题）”，null，null )  
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
 
-	if (window == NULL)
+	if (window == nullptr)
 	{
 		// 创建窗口失败
 		cout << " Failed to create GLFW window" << endl;
 		// 终止程序 
 		glfwTerminate();
-		return NULL;
+		return nullptr;
 	}
 
 	// 通知GLFW将我们窗口的上下文设置为当前线程的主上下文 

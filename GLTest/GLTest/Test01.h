@@ -15,8 +15,9 @@ const unsigned int SCR_HEIGHT = 600;
 // public 
 int  Test01();
 int  Test02();
+int  Test03();
 // private 
-void CreatGLFwWindow();
+void ConfigGLFwWindow();
 GLFWwindow * InitGLFWwindow();
 
 void CheckCompileErrors(int shader);

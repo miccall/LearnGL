@@ -1,3 +1,4 @@
-﻿  Test02.cpp
-  GLTest.vcxproj -> E:\miccall\VSproject\OpenGL\GLTest\Debug\GLTest.exe
-  GLTest.vcxproj -> E:\miccall\VSproject\OpenGL\GLTest\Debug\GLTest.pdb (Partial PDB)
+﻿  Test03.cpp
+e:\miccall\vsproject\learngl\gltest\gltest\shader.h(4): warning C4067: 预处理器指令后有意外标记 - 应输入换行符
+  GLTest.vcxproj -> E:\miccall\VSproject\LearnGL\GLTest\Debug\GLTest.exe
+  GLTest.vcxproj -> E:\miccall\VSproject\LearnGL\GLTest\Debug\GLTest.pdb (Partial PDB)

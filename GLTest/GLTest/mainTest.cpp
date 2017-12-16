@@ -5,5 +5,5 @@ using namespace std;
 
 int main()
 {
-	return Test02();
+	return Test03();
 }
