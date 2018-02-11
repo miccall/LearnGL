@@ -1,23 +1,28 @@
 #include "MyCourses.h"
 /**
-* 第二课 ，绘制一个三角形 
+* 第二课 ，绘制一个三角形
+* 
+* 顶点着色器 片元着色器的创立和编译 
+* 顶带缓冲对象， 顶点数组对象的认识
+* 
 */
 
-const char *vertexShaderSource =    "#version 330 core\n"
-									"layout (location = 0) in vec3 aPos;\n"
-									"void main()\n"
-									"{\n"
-									"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-									"}\0";
-const char *fragmentShaderSource =  "#version 330 core\n"
-									"out vec4 FragColor;\n"
-									"void main()\n"
-									"{\n"
-									"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-									"}\n\0";
 
 int Test02()
 {
+	const char *vertexShaderSource = "#version 330 core\n"
+		"layout (location = 0) in vec3 aPos;\n"
+		"void main()\n"
+		"{\n"
+		"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+		"}\0";
+	const char *fragmentShaderSource = "#version 330 core\n"
+		"out vec4 FragColor;\n"
+		"void main()\n"
+		"{\n"
+		"   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+		"}\n\0";
+
 	ConfigGLFwWindow();
 	GLFWwindow* window = InitGLFWwindow(SCR_WIDTH, SCR_HEIGHT);
 	if (window == nullptr)

@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(IncludePath);E:\miccall\VSproject-2018\NewOpenGLlearning\glm;E:\miccall\VSproject-2018\NewOpenGLlearning\GLFW-3.2.1\include;E:\miccall\VSproject-2018\NewOpenGLlearning\GLAD\include</IncludePath>
-    <LibraryPath>E:\miccall\VSproject-2018\NewOpenGLlearning\GLFW-3.2.1\lib-vc2015;$(LibraryPath)$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath);E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\glm;E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLFW-3.2.1\include;E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLAD\include</IncludePath>
+    <LibraryPath>E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLFW-3.2.1\lib-vc2015;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,6 +122,7 @@
     <ClCompile Include="MyGLLib.cpp" />
     <ClCompile Include="Test01.cpp" />
     <ClCompile Include="Test02.cpp" />
+    <ClCompile Include="Test03.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCourses.h" />

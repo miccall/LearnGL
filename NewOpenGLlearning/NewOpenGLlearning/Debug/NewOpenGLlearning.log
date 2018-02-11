@@ -1,5 +1,5 @@
-﻿  Test02.cpp
-e:\miccall\vsproject-2018\newopengllearning\newopengllearning\test02.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\miccall\vsproject-2018\newopengllearning\newopengllearning\mygllib.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  NewOpenGLlearning.vcxproj -> E:\miccall\VSproject-2018\NewOpenGLlearning\Debug\NewOpenGLlearning.exe
-  NewOpenGLlearning.vcxproj -> E:\miccall\VSproject-2018\NewOpenGLlearning\Debug\NewOpenGLlearning.pdb (Partial PDB)
+﻿  Test03.cpp
+e:\miccall\vsproject-2018\learngl\newopengllearning\newopengllearning\test03.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\miccall\vsproject-2018\learngl\newopengllearning\newopengllearning\mygllib.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  NewOpenGLlearning.vcxproj -> E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\Debug\NewOpenGLlearning.exe
+  NewOpenGLlearning.vcxproj -> E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\Debug\NewOpenGLlearning.pdb (Partial PDB)
