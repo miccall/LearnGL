@@ -33,6 +33,21 @@
     <ClCompile Include="Test03.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Test04.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test05.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test06.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLib.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test07.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGLLib.h">
@@ -41,5 +56,13 @@
     <ClInclude Include="MyCourses.h">
       <Filter>头文件</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader01.fs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="Shader01.vs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

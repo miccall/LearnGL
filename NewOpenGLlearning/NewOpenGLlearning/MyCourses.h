@@ -7,3 +7,7 @@ const unsigned int SCR_HEIGHT = 600;
 int Test01();
 int Test02();
 int Test03();
+int Test04();
+int Test05();
+int Test06();
+int Test07();

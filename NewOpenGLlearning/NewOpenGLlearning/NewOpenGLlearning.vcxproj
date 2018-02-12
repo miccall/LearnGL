@@ -120,13 +120,22 @@
     <ClCompile Include="..\GLAD\src\glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyGLLib.cpp" />
+    <ClCompile Include="ShaderLib.cpp" />
     <ClCompile Include="Test01.cpp" />
     <ClCompile Include="Test02.cpp" />
     <ClCompile Include="Test03.cpp" />
+    <ClCompile Include="Test04.cpp" />
+    <ClCompile Include="Test05.cpp" />
+    <ClCompile Include="Test06.cpp" />
+    <ClCompile Include="Test07.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCourses.h" />
     <ClInclude Include="MyGLLib.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader01.vs" />
+    <None Include="Shader01.fs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

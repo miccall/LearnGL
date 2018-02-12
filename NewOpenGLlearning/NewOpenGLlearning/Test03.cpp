@@ -6,8 +6,6 @@
 * 
 */
 
-
-
 int Test03() {
 	const char *vertexShaderSource = "#version 330 core\n"
 		"layout (location = 0) in vec3 aPos;\n"
@@ -82,16 +80,18 @@ int Test03() {
 	glGenVertexArrays(1,&VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
+
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER,VBO);
 	glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices,GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0,3,GL_FLOAT,GL_FALSE,3*sizeof(float),(void*)0);
+	glVertexAttribPointer( 0 , 3 , GL_FLOAT , GL_FALSE ,  3 * sizeof(float) , (void*)0 );
 	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER,0);
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER,0);
+	
 
 	//线框模式渲染
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -99,7 +99,7 @@ int Test03() {
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	// 渲染循环(Render Loop)
 	// ---------------------------------------------------------------------------------------------------------
-	while (!glfwWindowShouldClose(window) /* 如果窗口没有关闭 */)
+	while ( !glfwWindowShouldClose(window) /* 如果窗口没有关闭 */)
 	{
 		// ----- 用户交互 
 		processInput(window);
