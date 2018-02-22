@@ -1,6 +1,7 @@
 #include "MyGLLib.h"
 
 void miccall::ConfigGLFwWindow(){
+
 	// glfw: initialize and configure
 	// ------------------------------
 	// 调用 glfwInit() 来初始化GLFW 
@@ -38,7 +39,10 @@ GLFWwindow * miccall::InitGLFWwindow(unsigned int SCR_WIDTH , unsigned int SCR_H
 	// 当用户改变窗口的大小的时候，视口也应该被调整 所以要注册回调函数  
 	// 每当窗口改变大小，GLFW会调用 framebuffer_size_callback 函数 并填充相应的参数供你处理。 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
 
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	// glad: GLAD是用来管理OpenGL的函数指针的 
 	// ---------------------------------------
 	// 给GLAD传入了用来加载系统相关的OpenGL函数指针地址的函数  glfwGetProcAddress，它根据我们编译的系统定义了正确的函数。 
@@ -50,7 +54,6 @@ GLFWwindow * miccall::InitGLFWwindow(unsigned int SCR_WIDTH , unsigned int SCR_H
 	}
 	return window;
 }
-
 
 void miccall::CheckCompileErrors(int shader)
 {
@@ -102,6 +105,38 @@ void miccall::CheckProgramErrors(int program)
 	}
 }
 
+unsigned int miccall::creatTexture(const char * filename)
+{
+	unsigned int texture1;
+	glGenTextures(1, &texture1);
+	glBindTexture(GL_TEXTURE_2D, texture1);
+
+	// 为当前绑定的纹理对象设置环绕、过滤方式
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	//初始化资源图片
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char * data = stbi_load( filename , &width, &height, &nrChannels, 0);
+
+	//使用载入的资源图片填充贴图
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+
+	//释放内存
+	stbi_image_free(data);
+	return texture1;
+}
 
 int miccall::LinkShader(int &vertex, int &frag)
 {
@@ -124,15 +159,36 @@ int miccall::LinkShader(int &vertex, int &frag)
 
 void miccall::processInput(GLFWwindow *window)
 {
+
 	// glfwGetKey(window , keycode按键代码 )   是否正在被按下  
 	// 这里我们检查用户是否按下了返回键(Esc) 
 	// glfwSetwindowShouldClose 使用把 WindowShouldClose 属性设置为 true 的方法关闭 GLFW 
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+	
+	/*
+	float cameraSpeed = 2.5 * (deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		cameraPos += cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		cameraPos -= cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	*/
+	
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		camera.ProcessKeyboard(FORWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		camera.ProcessKeyboard(BACKWARD, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		camera.ProcessKeyboard(LEFT, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		camera.ProcessKeyboard(RIGHT, deltaTime);
+
 }
 
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
-// ---------------------------------------------------------------------------------------------
 void miccall::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	// make sure the viewport matches the new window dimensions; note that width and 
@@ -148,4 +204,75 @@ void miccall::CustomRender()
 
 	//清空屏幕的颜色缓冲 （拿刚刚glClearColor设置的颜色去清屏）
 	glClear(GL_COLOR_BUFFER_BIT);
+	if (GL_DEPTH_TEST)
+	{
+		glClear(GL_DEPTH_BUFFER_BIT);
+	}
+	float currentFrame = glfwGetTime();
+	deltaTime = currentFrame - lastFrame;
+	lastFrame = currentFrame;
+}
+
+void miccall::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+	/*
+	if (fov >= 1.0f && fov <= 45.0f)
+		fov -= yoffset;
+	if (fov <= 1.0f)
+		fov = 1.0f;
+	if (fov >= 45.0f)
+		fov = 45.0f;
+	*/
+	camera.ProcessMouseScroll(yoffset);
+
+}
+
+void miccall::mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	if (firstMouse)
+	{
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+
+	float xoffset = xpos - lastX;
+	float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+	lastX = xpos;
+	lastY = ypos;
+
+	/*
+	float sensitivity = 0.1f; // change this value to your liking
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+
+	yaw += xoffset;
+	pitch += yoffset;
+
+	// make sure that when pitch is out of bounds, screen doesn't get flipped
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
+
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront = glm::normalize(front);
+	*/
+
+	camera.ProcessMouseMovement(xoffset, yoffset, true);
+}
+
+glm::mat4  miccall::projectionMatrix()
+{
+	float ifov = camera.Zoom;
+	glm::mat4 projection = glm::perspective(glm::radians(ifov), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	return projection;
+}
+
+glm::mat4  miccall::viewMatrix()
+{
+	return camera.GetViewMatrix();
 }

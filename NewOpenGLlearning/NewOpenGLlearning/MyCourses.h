@@ -1,8 +1,6 @@
 #pragma once
 #include "MyGLLib.h"
 using namespace miccall;
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
 
 int Test01();
 int Test02();
@@ -11,3 +9,25 @@ int Test04();
 int Test05();
 int Test06();
 int Test07();
+int Test08();
+int Test09();
+int Test10();
+int Test11();
+int Test12();
+int Test13();
+int Test14();
+int Test15();
+int Test16();
+int Test17();
+int Test18();
+int Test19();
+int Test20();
+int Test21();
+int Test22();
+int Test23();
+int Test24();
+int Test25();
+int Test26();
+int Test27();
+int Test28();
+int Test29();

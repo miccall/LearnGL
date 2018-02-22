@@ -118,9 +118,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\GLAD\src\glad.c" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GlobalVariables.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyGLLib.cpp" />
     <ClCompile Include="ShaderLib.cpp" />
+    <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Test01.cpp" />
     <ClCompile Include="Test02.cpp" />
     <ClCompile Include="Test03.cpp" />
@@ -128,14 +131,36 @@
     <ClCompile Include="Test05.cpp" />
     <ClCompile Include="Test06.cpp" />
     <ClCompile Include="Test07.cpp" />
+    <ClCompile Include="Test08.cpp" />
+    <ClCompile Include="Test09.cpp" />
+    <ClCompile Include="Test10.cpp" />
+    <ClCompile Include="Test11.cpp" />
+    <ClCompile Include="Test12.cpp" />
+    <ClCompile Include="Test13.cpp" />
+    <ClCompile Include="Test14.cpp" />
+    <ClCompile Include="Test15.cpp" />
+    <ClCompile Include="Test16.cpp" />
+    <ClCompile Include="Test17.cpp" />
+    <ClCompile Include="Test18.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCourses.h" />
     <ClInclude Include="MyGLLib.h" />
+    <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader01.vs" />
     <None Include="Shader01.fs" />
+    <None Include="Shader08.fs" />
+    <None Include="Shader08.vs" />
+    <None Include="Shader11.fs" />
+    <None Include="Shader11.vs" />
+    <None Include="Shader12.fs" />
+    <None Include="Shader12.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="container.jpg" />
+    <Image Include="wall.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

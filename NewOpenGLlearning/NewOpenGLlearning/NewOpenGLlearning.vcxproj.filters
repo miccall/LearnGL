@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="资源文件\resources">
+      <UniqueIdentifier>{0661c5a5-69ce-4688-acb5-dec9c4a075df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="资源文件\Shaders">
+      <UniqueIdentifier>{37a2b1d9-5f31-4d14-9f56-31e1e3789905}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +54,48 @@
     <ClCompile Include="Test07.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Test08.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test09.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test10.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test11.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test12.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test13.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test14.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test15.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test16.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test17.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalVariables.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test18.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGLLib.h">
@@ -56,13 +104,42 @@
     <ClInclude Include="MyCourses.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader01.fs">
-      <Filter>资源文件</Filter>
+      <Filter>资源文件\Shaders</Filter>
     </None>
     <None Include="Shader01.vs">
-      <Filter>资源文件</Filter>
+      <Filter>资源文件\Shaders</Filter>
     </None>
+    <None Include="Shader08.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader08.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader11.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader11.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader12.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader12.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="wall.jpg">
+      <Filter>资源文件\resources</Filter>
+    </Image>
+    <Image Include="container.jpg">
+      <Filter>资源文件\resources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

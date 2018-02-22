@@ -48,16 +48,19 @@ namespace miccall {
 		unsigned int vertex, fragment;
 		int success;
 		char infoLog[512];
+
 		// vertex shader
 		vertex = glCreateShader(GL_VERTEX_SHADER);
 		glShaderSource(vertex, 1, &vShaderCode, NULL);
 		glCompileShader(vertex);
 		miccall::CheckCompileErrors(vertex, "VERTEX");
+		
 		// fragment Shader
 		fragment = glCreateShader(GL_FRAGMENT_SHADER);
 		glShaderSource(fragment, 1, &fShaderCode, NULL);
 		glCompileShader(fragment);
 		miccall::CheckCompileErrors(fragment, "FRAGMENT");
+
 		// if geometry shader is given, compile geometry shader
 		unsigned int geometry;
 		if (geometryPath != nullptr)
@@ -68,6 +71,7 @@ namespace miccall {
 			glCompileShader(geometry);
 			miccall::CheckCompileErrors(geometry, "GEOMETRY");
 		}
+
 		// shader Program
 		ID = glCreateProgram();
 		glAttachShader(ID, vertex);
