@@ -18,7 +18,7 @@ int Test18()
 	// 着色器 
 	Shader ourShader("Shader13.vs", "Shader13.fs", nullptr);
 
-	// 数据
+	// 一个cube的数据
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 		0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
@@ -63,7 +63,7 @@ int Test18()
 		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 	};
 
-	// world space positions of our cubes
+	// 生成十个cube 
 	glm::vec3 cubePositions[] = {
 		glm::vec3(0.0f,  0.0f,  0.0f),
 		glm::vec3(2.0f,  5.0f, -15.0f),
@@ -108,11 +108,10 @@ int Test18()
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 
-
 	while (!glfwWindowShouldClose(window))
 	{
 
-		//processInput(window);
+		// 处理输入信息 
 		processInput(window);
 		CustomRender();
 
@@ -121,15 +120,16 @@ int Test18()
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
-
+		// 调用shader 
 		ourShader.use();
 
+		// 矩阵变换  
 		glm::mat4 projection = projectionMatrix();
 		ourShader.setMat4("projection", projection);
 		glm::mat4 view = viewMatrix();
 		ourShader.setMat4("view", view);
 
-		// render boxes
+		// 渲染十个 cube 
 		glBindVertexArray(VAO);
 		for (unsigned int i = 0; i < 10; i++)
 		{
@@ -153,3 +153,5 @@ int Test18()
 	glfwTerminate();
 	return 0;
 }
+
+

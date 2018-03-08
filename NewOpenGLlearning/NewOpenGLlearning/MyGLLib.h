@@ -23,10 +23,10 @@ namespace miccall {
 	extern glm::vec3 cameraUp ;
 
 	// timing
-	extern float deltaTime ;	// time between current frame and last frame
+	extern float deltaTime ;	
 	extern float lastFrame ;
 
-
+	// mouse control var 
 	extern bool firstMouse ;
 	extern float yaw;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
 	extern float pitch ;
@@ -42,6 +42,7 @@ namespace miccall {
 		LEFT,
 		RIGHT
 	};
+	
 	// Default camera values
 	extern const float YAW ;
 	extern const float PITCH ;
@@ -81,6 +82,7 @@ namespace miccall {
 
 	glm::mat4 projectionMatrix();
 	glm::mat4 viewMatrix();
+
 	class Shader
 	{
 		public:
@@ -143,7 +145,6 @@ namespace miccall {
 		// Calculates the front vector from the Camera's (updated) Eular Angles
 		void updateCameraVectors();
 	};
-
 
 	extern Camera camera;
 }

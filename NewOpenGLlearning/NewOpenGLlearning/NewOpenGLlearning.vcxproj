@@ -142,6 +142,9 @@
     <ClCompile Include="Test16.cpp" />
     <ClCompile Include="Test17.cpp" />
     <ClCompile Include="Test18.cpp" />
+    <ClCompile Include="Test19.cpp" />
+    <ClCompile Include="Test20.cpp" />
+    <ClCompile Include="Test21.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCourses.h" />
@@ -157,6 +160,14 @@
     <None Include="Shader11.vs" />
     <None Include="Shader12.fs" />
     <None Include="Shader12.vs" />
+    <None Include="Shader13.fs" />
+    <None Include="Shader13.vs" />
+    <None Include="Shader20.fs" />
+    <None Include="Shader20.vs" />
+    <None Include="Shader20_light.fs" />
+    <None Include="Shader20_light.vs" />
+    <None Include="Shader21.fs" />
+    <None Include="Shader21.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="container.jpg" />

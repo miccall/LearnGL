@@ -96,6 +96,15 @@
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Test19.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test20.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test21.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGLLib.h">
@@ -131,6 +140,30 @@
       <Filter>资源文件\Shaders</Filter>
     </None>
     <None Include="Shader12.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader13.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader13.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader20.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader20.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader20_light.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader20_light.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader21.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader21.vs">
       <Filter>资源文件\Shaders</Filter>
     </None>
   </ItemGroup>
