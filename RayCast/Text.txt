@@ -1,0 +1,89 @@
+
+// 是否击中一个球 (废弃方法)
+bool ishit_sphere(const Vec3 & center, float Radius, const Ray & r)
+{
+	Vec3 oc = r.Origin() - center;
+	float a = dot(r.Direction(), r.Direction());
+	float b = 2.0 * dot(oc, r.Direction());
+	float c = dot(oc, oc) - Radius * Radius;
+	float discriminant = b* b - 4 * a * c;
+	return (discriminant > 0);
+}
+
+// 返回 击中球时的 t (废弃方法)
+float hit_sphere(const Vec3 & center, float Radius, const Ray & r)
+{
+	Vec3 oc = r.Origin() - center;
+	float a = dot(r.Direction(), r.Direction());
+	float b = 2.0 * dot(oc, r.Direction());
+	float c = dot(oc, oc) - Radius * Radius;
+	float discriminant = b* b - 4 * a * c;
+	if (discriminant < 0)
+		return -1;
+	else
+		return (-b - sqrt(discriminant)) / (2.0 * a);
+}
+
+// 光线击中的颜色 (废弃方法)
+Vec3 color(const Ray& r)
+{
+	Vec3 sphereorgin(0, 0, -1);
+	/* 射线画一个圆
+	if (ishit_sphere(Vec3(0, 0, -1), 0.5, r))
+	return Vec3(1.0, 0.0, 0.0);
+	*/
+	float t = hit_sphere(sphereorgin, 0.5, r);
+	if (t > 0.0)
+	{
+		// object normal 
+		Vec3 N = unit_vector(r.point_at_parameter(t) - sphereorgin);
+		return 0.5 * Vec3(N.x() + 1, N.y() + 1, N.z() + 1);
+	}
+
+	Vec3 unit_direction = unit_vector(r.Direction());
+	t = 0.5 * (unit_direction.y() + 1.0);
+	return (1.0 - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+}
+
+// 光线击中的颜色 (废弃方法)
+Vec3 color(const Ray& r, hitable * world)
+{
+	hit_record rec;
+	if (world->hit(r, 0.001, FLT_MAX, rec))
+	{
+		Vec3 target = rec.p + rec.normal + Random_in_unitt_cube();
+		return 0.5 * color(Ray(rec.p, target - rec.p), world);
+		// return 0.5 * Vec3(rec.normal.x() + 1, rec.normal.y() + 1, rec.normal.z() + 1);
+	}
+	else
+	{
+		Vec3 unit_direction = unit_vector(r.Direction());
+		float t = 0.5 * (unit_direction.y() + 1.0);
+		return (1.0 - t) * Vec3(1.0, 1.0, 1.0) + t * Vec3(0.5, 0.7, 1.0);
+	}
+}
+
+// 光线击中的颜色 (遗弃用)
+Vec3 color(const Ray& r, int depth)
+{
+	hit_record rec;
+	if (world->hit(r, 0.001, FLT_MAX, rec))
+	{
+		Ray scattered;
+		Vec3 attenuation;
+		Vec3 emitted = rec.mat_ptr->emitted(rec.u, rec.v, rec.p);
+		if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered))
+		{
+			return  emitted + attenuation * color(scattered, world, depth + 1);
+		}
+		else
+		{
+			return emitted;
+		}
+
+	}
+	else
+	{
+		return Vec3(0, 0, 0);
+	}
+}
