@@ -1,0 +1,18 @@
+includepath£º
+$(IncludePath);
+E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\glm;
+E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLFW-3.2.1\include;
+E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLAD\include;
+
+
+ref£º
+
+
+lib£º
+
+E:\miccall\VSproject-2018\LearnGL\NewOpenGLlearning\GLFW-3.2.1\lib-vc2015;
+$(LibraryPath)
+
+
+exr :
+opengl32.lib;glfw3.lib;%(AdditionalDependencies);kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)

@@ -105,6 +105,33 @@
     <ClCompile Include="Test21.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Test22.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test23.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test24.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test25.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test26.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test27.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test30.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Test31.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGLLib.h">
@@ -114,6 +141,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -166,12 +196,24 @@
     <None Include="Shader21.vs">
       <Filter>资源文件\Shaders</Filter>
     </None>
+    <None Include="Shader22.fs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
+    <None Include="Shader22.vs">
+      <Filter>资源文件\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="wall.jpg">
       <Filter>资源文件\resources</Filter>
     </Image>
     <Image Include="container.jpg">
+      <Filter>资源文件\resources</Filter>
+    </Image>
+    <Image Include="box-diffuse.png">
+      <Filter>资源文件\resources</Filter>
+    </Image>
+    <Image Include="box-specular.png">
       <Filter>资源文件\resources</Filter>
     </Image>
   </ItemGroup>

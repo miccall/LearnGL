@@ -1,5 +1,6 @@
 #pragma once
 #include "MyGLLib.h"
+#include "Mesh.h"
 using namespace miccall;
 
 int Test01();
@@ -31,3 +32,14 @@ int Test26();
 int Test27();
 int Test28();
 int Test29();
+int Test30();
+int Test31();
+int Test32();
+int Test33();
+int Test34();
+int Test35();
+int Test36();
+int Test37();
+int Test38();
+int Test39();
+int Test40();

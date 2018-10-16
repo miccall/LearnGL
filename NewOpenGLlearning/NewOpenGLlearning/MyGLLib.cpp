@@ -6,11 +6,12 @@ void miccall::ConfigGLFwWindow(){
 	// ------------------------------
 	// 调用 glfwInit() 来初始化GLFW 
 	glfwInit();
+
 	//----------------- glfwWindowHint ( 选项的名称 , 选项的值 ) 配置 GLFW------ ------------------
 	// 将主版本号(Major) 和 次版本号(Minor)都设为 3  
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	// 告诉GLFW我们使用的是核心模式(Core-profile)
+	// 告诉GLFW我们使用的是核心模式( Core-profile ) 
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 #ifdef __APPLE__
@@ -22,7 +23,7 @@ GLFWwindow * miccall::InitGLFWwindow(unsigned int SCR_WIDTH , unsigned int SCR_H
 {
 	// glfw 创建一个窗口对象 
 	// --------------------
-	// glfwCreateWindow(窗口的宽度，窗口的高度 ，“窗口名称（标题）”，null，null )  
+	// glfwCreateWindow( 窗口的宽度 ，窗口的高度 ，“窗口名称（标题）”，null，null )  
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
 
 	if (window == nullptr)
@@ -34,8 +35,9 @@ GLFWwindow * miccall::InitGLFWwindow(unsigned int SCR_WIDTH , unsigned int SCR_H
 		return nullptr;
 	}
 
-	// 通知GLFW将我们窗口的上下文设置为当前线程的主上下文 
+	// 通知 GLFW 将我们窗口的上下文设置为当前线程的主上下文 
 	glfwMakeContextCurrent(window);
+
 	// 当用户改变窗口的大小的时候，视口也应该被调整 所以要注册回调函数  
 	// 每当窗口改变大小，GLFW会调用 framebuffer_size_callback 函数 并填充相应的参数供你处理。 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -208,9 +210,16 @@ void miccall::CustomRender()
 	{
 		glClear(GL_DEPTH_BUFFER_BIT);
 	}
+	if (GL_STENCIL_TEST)
+	{
+		glClear(GL_STENCIL_BUFFER_BIT);
+	}
+
+	// 计算当前帧和上一帧的时间
 	float currentFrame = glfwGetTime();
 	deltaTime = currentFrame - lastFrame;
 	lastFrame = currentFrame;
+
 }
 
 void miccall::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
@@ -276,3 +285,81 @@ glm::mat4  miccall::viewMatrix()
 {
 	return camera.GetViewMatrix();
 }
+
+unsigned int miccall::loadTexture(char const * path)
+{
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponents;
+	unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
+	if (data)
+	{
+		GLenum format;
+		if (nrComponents == 1)
+			format = GL_RED;
+		else if (nrComponents == 3)
+			format = GL_RGB;
+		else if (nrComponents == 4)
+			format = GL_RGBA;
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+	}
+	else
+	{
+		std::cout << "Texture failed to load at path: " << path << std::endl;
+		stbi_image_free(data);
+	}
+
+	return textureID;
+}
+
+unsigned int miccall::TextureFromFile(const char * path, const string & directory, bool gamma)
+{
+	string filename = string(path);
+	filename = directory + '/' + filename;
+
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponents;
+	unsigned char *data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
+	if (data)
+	{
+		GLenum format;
+		if (nrComponents == 1)
+			format = GL_RED;
+		else if (nrComponents == 3)
+			format = GL_RGB;
+		else if (nrComponents == 4)
+			format = GL_RGBA;
+
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
+	}
+	else
+	{
+		std::cout << "Texture failed to load at path: " << path << std::endl;
+		stbi_image_free(data);
+	}
+
+	return textureID;
+}
+

@@ -3,5 +3,5 @@ using namespace miccall;
 
 int main()
 {
-	return Test21();
+	return Test31();
 }

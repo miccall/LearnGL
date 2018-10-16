@@ -2,6 +2,11 @@
 #include "stb_image.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -11,7 +16,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
 using namespace std;
 
 // settings
@@ -28,7 +32,8 @@ namespace miccall {
 
 	// mouse control var 
 	extern bool firstMouse ;
-	extern float yaw;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+	extern float yaw;	
+	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
 	extern float pitch ;
 	extern float lastX ;
 	extern float lastY ;
@@ -72,6 +77,8 @@ namespace miccall {
 	//渲染预处理
 	void CustomRender();
 
+
+
 	//鼠标滚轮和移动的事件 
 	void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 	void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -82,6 +89,10 @@ namespace miccall {
 
 	glm::mat4 projectionMatrix();
 	glm::mat4 viewMatrix();
+
+
+	unsigned int loadTexture(char const * path);
+	unsigned int TextureFromFile(const char *path, const string &directory, bool gamma = false);
 
 	class Shader
 	{

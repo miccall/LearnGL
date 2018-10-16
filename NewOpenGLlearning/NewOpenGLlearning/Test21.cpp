@@ -3,19 +3,19 @@
 /*
     shader 光照练习  
 */
+
 int Test21()
 {
 	ConfigGLFwWindow();
-	GLFWwindow *window = InitGLFWwindow(SCR_WIDTH, SCR_HEIGHT);
-	if (window == nullptr)
-	{
-		return -1;
-	}
-	glEnable(GL_DEPTH_TEST);
 
-	Shader lightingShader("Shader21.vs", "Shader21.fs", nullptr);
-	Shader lampShader("Shader20_light.vs", "Shader20_light.fs", nullptr);
-	//Shader lightingShader("Shader20_light.vs", "Shader20_light.fs", nullptr);
+	GLFWwindow *window = InitGLFWwindow(SCR_WIDTH, SCR_HEIGHT);
+	if (window == nullptr)	return -1;
+
+	glEnable(GL_DEPTH_TEST); // 开启深度测试
+
+	Shader lightingShader("Shader21.vs", "Shader21.fs", nullptr);  //物体 
+	Shader lampShader("Shader20_light.vs", "Shader20_light.fs", nullptr); // 光源
+
 	float vertices[] = {
 		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 		0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
@@ -64,8 +64,8 @@ int Test21()
 	glGenVertexArrays(1, &cubeVAO);
 	glGenBuffers(1, &VBO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBindBuffer( GL_ARRAY_BUFFER, VBO );
+	glBufferData( GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW );
 
 	glBindVertexArray(cubeVAO);
 

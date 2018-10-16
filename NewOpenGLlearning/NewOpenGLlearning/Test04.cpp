@@ -60,6 +60,7 @@ int Test04()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ARRAY_BUFFER,sizeof(vertices),vertices, GL_STATIC_DRAW);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 	// 如何解析顶点数据（应用到逐个顶点属性上）
 	glVertexAttribPointer( 0 , 3 , GL_FLOAT , GL_FALSE , 3*sizeof(float) , (void *) 0 ) ; 
 	glEnableVertexAttribArray(0);

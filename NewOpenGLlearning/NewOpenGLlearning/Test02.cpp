@@ -7,7 +7,6 @@
 * 
 */
 
-
 int Test02()
 {
 	const char *vertexShaderSource = "#version 330 core\n"
@@ -16,6 +15,7 @@ int Test02()
 		"{\n"
 		"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
 		"}\0";
+
 	const char *fragmentShaderSource = "#version 330 core\n"
 		"out vec4 FragColor;\n"
 		"void main()\n"
@@ -24,16 +24,13 @@ int Test02()
 		"}\n\0";
 
 	ConfigGLFwWindow();
-	GLFWwindow* window = InitGLFWwindow(SCR_WIDTH, SCR_HEIGHT);
-	if (window == nullptr)
-	{
-		// 初始化失败
-		return -1;
-	}
+	GLFWwindow* window = InitGLFWwindow( SCR_WIDTH , SCR_HEIGHT );
+	if (window == nullptr) return -1;
 
 	// =========================  创建shader =添加内容=编译=查错================================================================= 
 	
 	int vertshader = glCreateShader(GL_VERTEX_SHADER);
+
 	glShaderSource(vertshader , 1 , &vertexShaderSource , NULL );
 	glCompileShader(vertshader);
 	CheckCompileErrors(vertshader);
@@ -57,7 +54,7 @@ int Test02()
 	};
 	
 	// ======================   把数据发送到 GPU 上     ====vbo对象 绑定vbo 发送vbo ================================================================================
-	unsigned int VBO;
+	unsigned int VBO; 
 	// 生成VBO 
 	glGenBuffers(1, &VBO);
 	// 绑定vbo
@@ -71,8 +68,9 @@ int Test02()
 	glGenVertexArrays( 1 , &VAO ); 
 	//绑定VAO 
 	glBindVertexArray(VAO);
+
 	// 3. 设置顶点属性指针
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*) 0 );
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float) , (void*) 0 );
 	glEnableVertexAttribArray(0);
 	// note that this is allowed, the call to glVertexAttribPointer registered VBO as the vertex attribute's bound vertex buffer object so afterwards we can safely unbind
 	
